@@ -1,0 +1,21 @@
+{% extends 'base.html' %} {% block title %}User List{% endblock %} {% block
+    content %}
+
+
+{%if pet.photo_url%}
+<img src="{{pet.photo_url}}" alt="" style="width: 286px; height: auto; margin: auto">
+{%endif%}
+
+<h4>Hi, I am {{pet.name}}</h4>
+<ul>
+    <li>I am a {{pet.species}}</li>
+    {%if pet.age%}
+    <li>I am {{pet.age}} years old</li>
+    {%endif%}
+    {%if pet.notes%}
+    <li>{{pet.notes}}</li>
+    {%endif%}
+
+</ul>
+
+{% endblock %}

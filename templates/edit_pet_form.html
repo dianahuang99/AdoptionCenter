@@ -1,0 +1,32 @@
+{% extends 'base.html' %} {% block title %}User List{% endblock %} {% block
+    content %}
+<div class="d-flex flex-column" style="width: 400px">
+    <h1 class="text-center">Edit pet</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+
+
+        {% for field in form if field.widget.input_type !=
+          'hidden'%}
+        <div class="form-floating" style="margin-bottom: 10px">
+
+            {{field(class_="form-control", placeholder="hi")}}
+            {{field.label(class_="form-label")}}
+
+            <div class='d-flex justify-content-center'>
+                {% for err in field.errors %} {{err}} {%
+            endfor %}
+            </div>
+        </div>
+
+        {% endfor %}
+
+        <div class='d-flex justify-content-center'>
+            <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+    </form>
+
+</div>
+
+{% endblock %}
