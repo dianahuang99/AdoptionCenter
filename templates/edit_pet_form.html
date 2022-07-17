@@ -6,9 +6,9 @@
         {{ form.hidden_tag() }}
 
 
-
         {% for field in form if field.widget.input_type !=
-          'hidden'%}
+            'hidden'%}
+        {%if field.widget.input_type != 'checkbox'%}
         <div class="form-floating" style="margin-bottom: 10px">
 
             {{field(class_="form-control", placeholder="hi")}}
@@ -16,12 +16,21 @@
 
             <div class='d-flex justify-content-center'>
                 {% for err in field.errors %} {{err}} {%
-            endfor %}
+              endfor %}
             </div>
         </div>
+        {%elif field.widget.input_type == 'checkbox'%}
 
-        {% endfor %}
+        <div class="form-check">
+            {{field.label(class_="form-check-label")}}
+            {{field(class_="form-check-input", placeholder="hi")}}
 
+        </div>
+
+
+
+        {%endif%}
+        {%endfor%}
         <div class='d-flex justify-content-center'>
             <button type="submit" class="btn btn-success">Submit</button>
         </div>
